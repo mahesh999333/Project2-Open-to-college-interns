@@ -25,7 +25,6 @@ const createColleges = async function (req, res) {
             return res.status(400).send({ status: false, msg: "This name already exists" })
         }
 
-
         // FULL NAME VALIDATION
         if (!validator.isValidField(collegeData.fullName)) {
             return res.status(400).send({ status: false, msg: "Full Name is required" })
@@ -42,12 +41,10 @@ const createColleges = async function (req, res) {
             return res.status(400).send({ status: false, msg: "Logo Link is Invalid" })
         }
         
-
         // CREATE COLLEGE DATA
         let newCollege = await collegeModel.create(collegeData);
         
         let result = {}
-        
         result.name = newCollege.name
         result.fullName = newCollege.fullName
         result.logoLink = newCollege.logoLink
@@ -58,8 +55,6 @@ const createColleges = async function (req, res) {
         console.log(error)
         res.status(500).send({ status: false, msg: error.message })
     }
-
-    
 }
 
 // GET LIST OF INTERNS BY COLLEGE

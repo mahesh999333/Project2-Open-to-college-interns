@@ -16,7 +16,7 @@ const isValidURL = function (link){
 const isValidMobile = function (mobile){
     return (/^[6-9]{1}[0-9]{9}$/.test(mobile))
 }
-//@"^[0-9]{10}$"
+
 const isValidEmail = function (email){
     return (/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))
 }
