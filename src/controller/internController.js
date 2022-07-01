@@ -46,13 +46,13 @@ const createIntern = async function (req,res){
         return res.status(400).send({status: false, msg: "Mobile has been already registered"})
     }
 
-    // COLLEGE ID VALIDATION
-    if (!validator.isValidField(internData.collegeId)){
-        return res.status(400).send({status: false, msg: "Enter college Id"})
-    }
-    if (!validator.isValidObjectId(internData.collegeId)){
-        return res.status(400).send({status: false, msg: "Collge Id is invalid"})
-    }
+    // // COLLEGE ID VALIDATION
+    // if (!validator.isValidField(internData.collegeId)){
+    //     return res.status(400).send({status: false, msg: "Enter college Id"})
+    // }
+    // if (!validator.isValidObjectId(internData.collegeId)){
+    //     return res.status(400).send({status: false, msg: "Collge Id is invalid"})
+    // }
 
     // CREATE INTERN DATA
     let newIntern = await internModel.create(internData);
@@ -64,7 +64,7 @@ const createIntern = async function (req,res){
         name : internData.name, 
         email : internData.email,
         mobile : internData.mobile,
-        collegeId : internData.collegeId 
+        collegeId : internData.collegeName 
     })
     
     return res.status(201).send({status: true, data: result})

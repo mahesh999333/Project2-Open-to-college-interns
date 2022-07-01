@@ -23,10 +23,8 @@
   "homepage": "https://github.com/dimplemahule/internshipGroup37#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "instal": "^0.0.1-security",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.1",
-    "nodemon": "^2.0.18",
-    "validator": "^13.7.0"
+    "nodemon": "^2.0.18"
+    
   }
 }

@@ -9,7 +9,7 @@ const isValidRequestBody = function (requestBody){
 }
 
 const isValidURL = function (link){
-    let URLRegex = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+    let URLRegex = /(http[s]*:\/\/)([a-z\-_0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-_\/._~:?#\[\]@!$&'()*+,;=%]*)([A-Za-z0-9]+\.)(jpg|jpeg|png)$/
     return (URLRegex.test(link))
 }
 
@@ -34,3 +34,7 @@ const isValidName = function (name){
 }
 
 module.exports= {isValidField,isValidRequestBody,isValidURL,isValidMobile, isValidEmail, isValidPassword, isValidObjectId, isValidName  }
+
+
+// regexp
+

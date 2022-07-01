@@ -1,6 +1,6 @@
 const collegeModel = require('../model/collegeModel');
 const internModel = require('../model/internModel');
-const validator = require('../validator/validator')
+const validator = require('../validator/validator');
 
 
 const createColleges = async function (req, res) {
@@ -15,7 +15,7 @@ const createColleges = async function (req, res) {
 
         // NAME VALIDATION
         if (!validator.isValidField(collegeData.name)) {
-            return res.statu(400).send({ status: false, msg: "Name is required" })
+            return res.status(400).send({ status: false, msg: "Name is required" })
         }
         if (!validator.isValidName(collegeData.name)) {
             return res.status(400).send({ status: false, msg: "Name is not valid" })
@@ -45,7 +45,7 @@ const createColleges = async function (req, res) {
 
         // CREATE COLLEGE DATA
         let newCollege = await collegeModel.create(collegeData);
-        console.log(newCollege)
+        
         let result = {}
         
         result.name = newCollege.name
@@ -55,6 +55,7 @@ const createColleges = async function (req, res) {
         return res.status(201).send({ status: true, data:result })
     }
     catch (error) {
+        console.log(error)
         res.status(500).send({ status: false, msg: error.message })
     }
 
@@ -76,10 +77,11 @@ const getCollegeDetails = async function (req, res) {
         }
 
         const interns = await internModel.find({ collegeId: collegeId._id, isDeleted: false }).select({ _id: 1, name: 1, email: 1, mobile: 1 })
-        res.status(200).send({ status: true, data: college, interns });
         if (interns.length == 0) {
             return res.status(404).send({ status: false, msg: "no interns found" })
         }
+        res.status(200).send({ status: true, data: college, interns });
+        
     }
     catch (error) {
         res.status(500).send({ status: false, message: error.message });
